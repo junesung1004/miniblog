@@ -1,0 +1,9 @@
+.login-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  h1 {
+    color: aqua;
+    font-size: 1.5rem;
+  }
+}
