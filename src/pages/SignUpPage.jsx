@@ -41,7 +41,7 @@ export default function SignUpPage() {
   return (
     <>
       <div className="sign-up-container">
-        <div className="title">회원가입</div>
+        <div className="title">회원가입!</div>
         <p className="title-sub">회원이 되어 다양한 혜택을 경험해 보세요!</p>
 
         <div className="input-box">
