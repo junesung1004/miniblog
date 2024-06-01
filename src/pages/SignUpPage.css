@@ -4,14 +4,13 @@
   margin: 0 auto;
 }
 
-
 .login-container {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-.title{
+.title {
   color: black;
   font-size: 2rem;
   font-weight: bold;
@@ -21,7 +20,7 @@
   padding-top: 20px;
 }
 
-.title-sub{
+.title-sub {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,31 +29,31 @@
   font-size: 15px;
 }
 
-.input-box{
+.input-box {
   margin: 0;
-  padding: 10px 0;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.email-box{
+.email-box {
   margin: 0;
   padding: 10px;
 }
 
-.password-box{
+.password-box {
   margin: 0;
   padding: 10px;
 }
 
-.password-box-2{
+.password-box-2 {
   margin: 0;
   padding: 10px;
 }
 
-.name-box{
+.name-box {
   margin: 0;
   padding: 10px;
 }
@@ -72,15 +71,18 @@ input::placeholder {
   color: lightgrey;
 }
 
+input:focus {
+  outline: 1px solid #0095f6;
+}
 
-.last-box{
+.last-box {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 30px;
 }
 
-.signup-btn{
+.signup-btn {
   width: 150px;
   height: 50px;
   border: 1px solid lightgrey;
@@ -92,13 +94,13 @@ input::placeholder {
 }
 
 .signup-btn:hover {
-  background: #3c66ee;;
+  background: #3c66ee;
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
 
-.cancle-btn{
+.cancle-btn {
   width: 150px;
   height: 50px;
   border: 1px solid lightgrey;
