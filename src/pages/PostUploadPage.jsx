@@ -38,7 +38,7 @@ export default function PostUploadPage() {
       <div className="post-upload-container">
         <form className="post-input">
           <input className="title-input" type="text" placeholder="제목" onChange={handleChangeTitle} name="title" value={title} />
-          <textarea className="content-input" placeholder="내용을 입력해주세요." onChange={handleChangeDescription} name="description" value={description} />
+          <textarea className="content-input" placeholder="내용을 입력해주세요" onChange={handleChangeDescription} name="description" value={description} />
           <input type="file" />
           <button type="submit" className="upload-btn" onClick={clickMoveEvent}>
             등록
