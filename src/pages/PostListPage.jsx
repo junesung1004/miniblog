@@ -10,7 +10,7 @@ export default function PostListPage() {
 
   // useEffect(() => {
   //   const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
-  //   setPosts(storedPosts);;;
+  //   setPosts(storedPosts);;;npm
   // }, []);
 
   useEffect(() => {
