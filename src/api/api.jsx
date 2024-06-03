@@ -1,24 +1,36 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+
 import { getDatabase, ref as databaseRef, push, get, set } from "firebase/database";
 import { getDownloadURL, getStorage, ref as refImg, uploadBytes } from "firebase/storage";
 import { v4 as uuid } from "uuid";
+import {
+  GoogleAuthProvider,
+  browserSessionPersistence,
+  createUserWithEmailAndPassword,
+  getAuth,
+  setPersistence,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB-2RpqLbeZ6saSdRsFd2LinbZVfP10hdY",
-  authDomain: "miniblog-9b4d2.firebaseapp.com",
-  projectId: "miniblog-9b4d2",
-  storageBucket: "miniblog-9b4d2.appspot.com",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   databaseURL: "https://miniblog-9b4d2-default-rtdb.asia-southeast1.firebasedatabase.app/",
   appId: "1:70096492949:web:94cb336e429efcc670be9c",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const database = getDatabase(app);
 const storage = getStorage();
+const auth = getAuth();
+const provider = new GoogleAuthProvider();
 
 //이미지를 storage에 업로드하는 api
 export async function uploadImages(file) {
@@ -76,5 +88,86 @@ export async function getPostId(postId) {
     }
   } catch (err) {
     console.error("id비교하여 디테일페이지에 정보를 찾는 기능 에러 : ", err);
+  }
+}
+
+//구글 로그인 api
+export async function googleLogin() {
+  try {
+    const userData = await signInWithPopup(auth, provider);
+    console.log("userData : ", userData);
+    const user = userData.user;
+    console.log("user : ", user);
+    return user;
+  } catch (err) {
+    console.error("구글 로그인 api 기능 실패 : ", err);
+  }
+}
+
+//이메일, 비밀번호 회원가입 api
+export async function joinEmail(email, password, name) {
+  try {
+    //Authentication firebase 유저 인증에 업로드 - database 업로드 x
+    const userData = await createUserWithEmailAndPassword(auth, email, password);
+    console.log("userData : ", userData);
+    const user = userData.user;
+    await updateProfile(user, {
+      displayName: name,
+    });
+    await signOut(auth);
+
+    //firebase에 database 에 업로드하기 위한 api 코드
+    await set(databaseRef(database, "users/" + user.uid), {
+      email,
+      name,
+    });
+    return user;
+  } catch (err) {
+    console.error("회원가입 에러 : ", err);
+  }
+}
+
+//이메일, 비밀번호 로그인 api
+export async function loginEmail(email, password) {
+  try {
+    await setPersistence(auth, browserSessionPersistence);
+    const userData = await signInWithEmailAndPassword(auth, email, password);
+    const user = userData.user;
+    return user;
+  } catch (err) {
+    console.error("로그인 기능 에러 : ", err);
+  }
+}
+
+//댓글 업로드 api
+export async function setComment(postId, comments, userName) {
+  try {
+    const id = uuid();
+    console.log("id : ", id);
+    const commentsData = await set(databaseRef(database, `comments/${postId}/${id}`), {
+      comments,
+      userName,
+    });
+    console.log("commentsData : ", commentsData);
+    return commentsData;
+  } catch (err) {
+    console.error("댓글 데이터베이스 폴더에 업로드 하는 기능 에러 : ", err);
+  }
+}
+
+export async function getComment(postId) {
+  try {
+    const commentRef = databaseRef(database, `comments/${postId}`);
+    console.log("commentRef : ", commentRef);
+    const snapshot = await get(commentRef);
+    if (snapshot.exists()) {
+      const item = Object.values(snapshot.val());
+      return item;
+    } else {
+      return [];
+    }
+  } catch (err) {
+    console.log("댓글 api 가져오기 기능 에러 : ", err);
+    return [];
   }
 }
