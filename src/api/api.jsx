@@ -17,10 +17,10 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  apiKey: "AIzaSyB-2RpqLbeZ6saSdRsFd2LinbZVfP10hdY",
+  authDomain: "miniblog-9b4d2.firebaseapp.com",
+  projectId: "miniblog-9b4d2",
+  storageBucket: "https://miniblog-9b4d2-default-rtdb.asia-southeast1.firebasedatabase.app/",
   databaseURL: "https://miniblog-9b4d2-default-rtdb.asia-southeast1.firebasedatabase.app/",
   appId: "1:70096492949:web:94cb336e429efcc670be9c",
 };
