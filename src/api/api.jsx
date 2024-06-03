@@ -17,12 +17,14 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB-2RpqLbeZ6saSdRsFd2LinbZVfP10hdY",
-  authDomain: "miniblog-9b4d2.firebaseapp.com",
-  projectId: "miniblog-9b4d2",
-  storageBucket: "https://miniblog-9b4d2-default-rtdb.asia-southeast1.firebasedatabase.app/",
-  databaseURL: "https://miniblog-9b4d2-default-rtdb.asia-southeast1.firebasedatabase.app/",
-  appId: "1:70096492949:web:94cb336e429efcc670be9c",
+  apiKey: "AIzaSyDs44n0GF0G3N0bRHUleCDPPvAWpf3eCfA",
+  authDomain: "miniblog-9404c.firebaseapp.com",
+  databaseURL: "https://miniblog-9404c-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "miniblog-9404c",
+  storageBucket: "miniblog-9404c.appspot.com",
+  messagingSenderId: "70189587756",
+  appId: "1:70189587756:web:2f53f491b5530bbfde2089",
+  measurementId: "G-LC6KHGHEJD",
 };
 
 // Initialize Firebase
