@@ -9,15 +9,12 @@ import {
   browserSessionPersistence,
   createUserWithEmailAndPassword,
   getAuth,
-  getRedirectResult,
   setPersistence,
   signInWithEmailAndPassword,
   signInWithPopup,
-  signInWithRedirect,
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { Navigate } from "react-router-dom";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDs44n0GF0G3N0bRHUleCDPPvAWpf3eCfA",
@@ -99,25 +96,15 @@ export async function getPostId(postId) {
 //구글 로그인 api
 export async function googleLogin() {
   try {
-    await signInWithRedirect(auth, provider);
+    const userData = await signInWithPopup(auth, provider);
+    console.log("userData : ", userData);
+    const user = userData.user;
+    console.log("user : ", user);
+    return user;
   } catch (err) {
     console.error("구글 로그인 api 기능 실패 : ", err);
   }
 }
-
-export async function handleRedirectResult() {
-  try {
-    const result = await getRedirectResult(auth);
-    return result;
-  } catch (err) {
-    console.error("리디렉션 결과 처리 실패 : ", err);
-  }
-}
-
-//구글 자동 로그인 방지
-provider.setCustomParameters({
-  prompt: "select_account",
-});
 
 //이메일, 비밀번호 회원가입 api
 export async function joinEmail(email, password, name) {
