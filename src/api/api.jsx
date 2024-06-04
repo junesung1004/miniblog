@@ -34,7 +34,7 @@ const storage = getStorage();
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
-//이미지를 storage에 업로드하는 api
+//이미지를 storage에 업로드하는 api...
 export async function uploadImages(file) {
   try {
     const id = uuid();
