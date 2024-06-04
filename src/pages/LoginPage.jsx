@@ -3,7 +3,7 @@ import "./LoginPage.css";
 import React, { useEffect, useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { googleLogin, loginEmail } from "../api/api";
+import { googleLogin, handleRedirectResult, loginEmail } from "../api/api";
 
 export default function LoginPage() {
   const navigete = useNavigate();
@@ -18,6 +18,8 @@ export default function LoginPage() {
 
   // const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
   // const passwordRegEx = /^[A-Za-z0-9]{8,20}$/
+
+  const navigate = useNavigate();
 
   // 이메일 입력
   const handelEmailChange = (e) => {
@@ -49,17 +51,23 @@ export default function LoginPage() {
 
   const clickGoogleLogin = async () => {
     try {
-      const userData = await googleLogin();
-      if (userData) {
-        alert("구글 로그인에 성공했습니다.");
-        // sessionStorage.setItem("user", JSON.stringify(userData));
-        setUser(userData);
-        navigete("/");
-      }
+      await googleLogin();
     } catch (err) {
-      console.error("구글 로그인 안됌 : ", err);
+      console.error("구글 로그인 안됨 : ", err);
     }
   };
+
+  useEffect(() => {
+    const fetchRedirectResult = async () => {
+      const result = await handleRedirectResult();
+      if (result?.user) {
+        setUser(result.user);
+        navigate("/");
+      }
+    };
+
+    fetchRedirectResult();
+  }, [navigate]);
 
   const clickEmailLogin = async () => {
     try {
