@@ -17,14 +17,14 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDs44n0GF0G3N0bRHUleCDPPvAWpf3eCfA",
-  authDomain: "miniblog-9404c.firebaseapp.com",
-  databaseURL: "https://miniblog-9404c-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "miniblog-9404c",
-  storageBucket: "miniblog-9404c.appspot.com",
-  messagingSenderId: "70189587756",
-  appId: "1:70189587756:web:2f53f491b5530bbfde2089",
-  measurementId: "G-LC6KHGHEJD",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  // messagingSenderId: "70189587756",
+  // appId: "1:70189587756:web:2f53f491b5530bbfde2089",
+  // measurementId: "G-LC6KHGHEJD",
 };
 
 // Initialize Firebase
