@@ -106,6 +106,11 @@ export async function googleLogin() {
   }
 }
 
+//구글 자동 로그인 방지
+provider.setCustomParameters({
+  prompt: "select_account",
+});
+
 //이메일, 비밀번호 회원가입 api
 export async function joinEmail(email, password, name) {
   try {
