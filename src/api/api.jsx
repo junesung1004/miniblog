@@ -12,6 +12,7 @@ import {
   setPersistence,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -96,13 +97,12 @@ export async function getPostId(postId) {
 //구글 로그인 api
 export async function googleLogin() {
   try {
-    const userData = await signInWithPopup(auth, provider);
-    console.log("userData : ", userData);
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const userData = isMobile ? await signInWithRedirect(auth, provider) : await signInWithPopup(auth, provider);
     const user = userData.user;
-    console.log("user : ", user);
     return user;
   } catch (err) {
-    console.error("구글 로그인 api 기능 실패 : ", err);
+    console.error("구글 로그인 api 기능 실패: ", err);
   }
 }
 
