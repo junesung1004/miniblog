@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics"; // Firebase Analytics 추가
 
 import { getDatabase, ref as databaseRef, push, get, set } from "firebase/database";
 import { getDownloadURL, getStorage, ref as refImg, uploadBytes } from "firebase/storage";
@@ -17,15 +18,17 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  apiKey: process.env.REACT_APP_key,
+  authDomain: process.env.REACT_APP_auth_domain,
+  databaseURL: process.env.REACT_APP_database_url,
+  projectId: process.env.REACT_APP_project_id,
+  storageBucket: process.env.REACT_APP_storage,
   // messagingSenderId: "70189587756",
-  // appId: "1:70189587756:web:2f53f491b5530bbfde2089",
+  appId: process.env.REACT_APP_api_id,
   // measurementId: "G-LC6KHGHEJD",
 };
+
+console.log(process.env.REACT_APP_API_KEY);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -33,6 +36,8 @@ const database = getDatabase(app);
 const storage = getStorage();
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
+
+const analytics = getAnalytics(app);
 
 //이미지를 storage에 업로드하는 api...
 export async function uploadImages(file) {
@@ -48,7 +53,7 @@ export async function uploadImages(file) {
   }
 }
 
-//글 업로드 페이지에서 주제, 내용 데이터를 firebase에 업로드하는 api
+//글 업로드 페이지에서 주제,, 내용 데이터를 firebase에 업로드하는 api
 export async function uploadPostData(post, imgUrl) {
   try {
     const id = uuid();
