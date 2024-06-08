@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./PostDetailPage.css";
-import { setComment, getPostId, getComment } from "../api/api";
+import { setComment, getPostId, getComment, deletePostData } from "../api/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -16,7 +16,6 @@ export default function PostDetailPage() {
   const id = pathName.split("/").pop();
 
   const navigete = useNavigate();
-
   const [user, setUser] = useState(null);
   // console.log("user : ", user);
 
@@ -84,6 +83,16 @@ export default function PostDetailPage() {
     fetchComments();
   }, [id]);
 
+  const handleDeleteEvent = async (id) => {
+    console.log("클릭")
+    try {
+      await deletePostData(id)
+      // navigete('/')
+    } catch(err) {
+      console.error("글 삭제기능 에러 : ", err)
+    }
+  }
+
   return (
     <div className="container">
       <div className="post-detail-container">
@@ -117,6 +126,7 @@ export default function PostDetailPage() {
           </div>
         ))}
       </div>
+      <button type="button" onClick={handleDeleteEvent}>삭제</button>
     </div>
   );
 }
