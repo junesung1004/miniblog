@@ -38,7 +38,7 @@ export default function LoginPage() {
     setPassword(e.target.value);
     // console.log("password : ", e.target.value)
 
-    // 비밀번호 유효성 검사
+    // 비밀번호 유효성 검사...... 
     const passwordRegEx = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
     if (passwordRegEx.test(password)) {
       setPasswordValid(true);

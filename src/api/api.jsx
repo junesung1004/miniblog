@@ -67,6 +67,15 @@ export async function uploadPostData(post, imgUrl) {
   }
 }
 
+export async function deletePostData(postId) {
+  try {
+    const result = delete(databaseRef(database, `posts/${postId}`))
+    return result
+  } catch(err) {
+    console.error("글 삭제 기능 에려 : ", err)
+  }
+}
+
 //firebase에 글 업데이트한 data를 호출하는 api
 export async function getLoadPostData() {
   try {
