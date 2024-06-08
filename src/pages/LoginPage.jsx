@@ -36,7 +36,7 @@ export default function LoginPage() {
   // 비밀번호 입력
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    // console.log("password : ", e.target.value)
+    // console.log("password : ", e.target.valuasdasdasdasdasdasde)
 
     // 비밀번호 유효성 검사...... 
     const passwordRegEx = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;

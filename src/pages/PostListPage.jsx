@@ -9,7 +9,7 @@ export default function PostListPage() {
   const navigate = useNavigate();
 
   // useEffect(() => {
-  //   const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+  //   const storedPostsadasdasdasdasdad = JSON.parse(localStorage.getItem("posts")) || [];
   //   setPosts(storedPosts);
   // }, []);
 

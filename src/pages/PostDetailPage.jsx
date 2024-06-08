@@ -17,7 +17,7 @@ export default function PostDetailPage() {
 
   const navigete = useNavigate();
   const [user, setUser] = useState(null);
-  // console.log("user : ", user);
+  // console.log("uasdasdasdasdasdasdasdsaser : ", user);
 
   useEffect(() => {
     const auth = getAuth();

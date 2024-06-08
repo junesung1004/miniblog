@@ -8,7 +8,7 @@ import PostListPage from "./PostListPage";
 export default function MainPage() {
   //const reduxSelector = useSelector((state) => state);
 
-  //const dispatch = useDispatch();
+  //const dispatch = useDispasdasdasdasdaasdasdsadgiottch();
   return (
     <div className="main-container">
       <PostListPage />
