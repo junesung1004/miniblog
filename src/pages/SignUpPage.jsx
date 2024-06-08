@@ -39,7 +39,7 @@ export default function SignUpPage() {
     // console.log("password : ", e.target.value)
 
     // 비밀번호 유효성 검사
-    const passwordRegEx = /^(?=.*[A-Za-z0-9])(?=.*[!@#$%^&*?~_]).{8,}$/;
+    const passwordRegEx = /^(?=.*[A-Za-z0-9])(?=.*[!@#$%^&*?~_]).{8,20}$/;
     if (passwordRegEx.test(password)) {
       setPasswordValid(true);
     } else {

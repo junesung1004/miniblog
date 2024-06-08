@@ -83,15 +83,16 @@ export default function PostDetailPage() {
     fetchComments();
   }, [id]);
 
-  const handleDeleteEvent = async (id) => {
-    console.log("클릭")
+  const handleDeleteEvent = async () => {
+    console.log("클릭");
     try {
-      await deletePostData(id)
-      // navigete('/')
-    } catch(err) {
-      console.error("글 삭제기능 에러 : ", err)
+      const res = await deletePostData(id);
+      console.log("res : ", res);
+      navigete("/");
+    } catch (err) {
+      console.error("글 삭제기능 에러 : ", err);
     }
-  }
+  };
 
   return (
     <div className="container">
@@ -126,7 +127,9 @@ export default function PostDetailPage() {
           </div>
         ))}
       </div>
-      <button type="button" onClick={handleDeleteEvent}>삭제</button>
+      <button type="button" onClick={handleDeleteEvent}>
+        삭제
+      </button>
     </div>
   );
 }
