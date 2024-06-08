@@ -26,7 +26,7 @@
     }
     .fileUpload-btn {
       display: flex;
-      /* justify-content: space-betasdasdasdasaween; */
+      /* justify-content: space-between; */
       align-items: center;
       width: 300px;
       /* margin: 0px 10px 10px 190px; */

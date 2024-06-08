@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics"; // Firebase Analytics 추가
 
-import { getDatabase, ref as databaseRef, push, get, set, remove } from "firebase/database";
+import { getDatabase, ref as databaseRef,  get, set, remove } from "firebase/database";
 import { getDownloadURL, getStorage, ref as refImg, uploadBytes } from "firebase/storage";
 import { v4 as uuid } from "uuid";
 import {
@@ -67,24 +67,12 @@ export async function uploadPostData(post, imgUrl) {
   }
 }
 
-// export async function deletePostData(postId) {
-//   try {
-//     const db = getDatabase(); // 데이터베이스 인스턴스 가져오기
-//     const postRef = databaseRef(db, `posts/${postId}`);
-//     await remove(postRef); // 삭제 함수 호출 시 await 사용
-//     console.log("글이 성공적으로 삭제되었습니다.");
-//   } catch (err) {
-//     console.error("글 삭제 기능 에러 : ", err);
-//   }
-// }
-
-export async function deletePostData(postId) {
+export async function deletePostDat(postId) {
   try {
     const postRef = databaseRef(database, `posts/${postId}`);
-    await remove(postRef); // 삭제 함수 호출 시 await 사용
-    console.log("글이 성공적으로 삭제되었습니다.");
+    await remove(postRef);
   } catch (err) {
-    console.error("글 삭제 기능 에러 : ", err);
+    console.error("포스트 글 삭제");
   }
 }
 

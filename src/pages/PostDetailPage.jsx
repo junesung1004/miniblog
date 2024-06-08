@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from "react";
 import "./PostDetailPage.css";
-import { setComment, getPostId, getComment, deletePostData } from "../api/api";
+import { setComment, getPostId, getComment, deletePostDat } from "../api/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function PostDetailPage() {
   const [post, setPost] = useState({});
-  // console.log("post : ", post);
+  console.log("post : ", post);
   const [text1, setText1] = useState("");
   const [comments, setComments] = useState([]); // 댓글 목록 상태 추가
-  console.log("comments : ", comments);
+  // console.log("comments : ", comments);
 
   const location = useLocation();
   const pathName = location.pathname;
   const id = pathName.split("/").pop();
 
   const navigete = useNavigate();
+
   const [user, setUser] = useState(null);
   // console.log("user : ", user);
+
+  const userUid = localStorage.getItem("uid");
+  console.log("userUid : ", userUid);
 
   useEffect(() => {
     const auth = getAuth();
@@ -83,14 +87,17 @@ export default function PostDetailPage() {
     fetchComments();
   }, [id]);
 
-  const handleDeleteEvent = async () => {
-    console.log("클릭");
+  const clickDeletePost = async () => {
     try {
-      const res = await deletePostData(id);
-      console.log("res : ", res);
-      navigete("/");
+      if (!user) {
+        alert("댓글을 지울수 없습니다.");
+      } else {
+        const res = await deletePostDat(id);
+        alert("글 삭제에 성공했습니다.");
+        navigete("/");
+      }
     } catch (err) {
-      console.error("글 삭제기능 에러 : ", err);
+      console.log("글 삭제 기능 에러 : ", err);
     }
   };
 
@@ -127,9 +134,11 @@ export default function PostDetailPage() {
           </div>
         ))}
       </div>
-      <button type="button" onClick={handleDeleteEvent}>
-        삭제
-      </button>
+      {post?.userUid === userUid ? (
+        <button className="delete-btn" type="button" onClick={clickDeletePost}>
+          삭제
+        </button>
+      ) : null}
     </div>
   );
 }
