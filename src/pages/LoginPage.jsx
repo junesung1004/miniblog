@@ -24,7 +24,7 @@ export default function LoginPage() {
     setEmail(e.target.value);
     // console.log("email : ", e.target.value)111
 
-    // 이메일 유효성 검사aaa
+    // 이메일 유효성 검사
     const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
     if (emailRegEx.test(email)) {
       setEmailValid(true);
