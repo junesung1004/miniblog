@@ -7,7 +7,7 @@ import { RiLockPasswordFill, RiLockPasswordLine } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 
 export default function SignUpPage() {
-  const navigete = useNavigate();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -53,7 +53,7 @@ export default function SignUpPage() {
     setConfirmPw(confirmPwValue);
 
     // 비밀번호 유효성 검사
-    const confirmPWdRegEx = /^(?=.*[A-Za-z0-9])(?=.*[!@#$%^&*?~_]).{8,}$/;
+    const confirmPWdRegEx = /^(?=.*[A-Za-z0-9])(?=.*[!@#$%^&*?~_]).{8,20}$/;
 
     if (confirmPWdRegEx.test(confirmPw)) {
       setConfirmPwValid(true);
@@ -69,16 +69,11 @@ export default function SignUpPage() {
 
   const clickSignUpEvent = async () => {
     try {
-      const res = await joinEmail(email, password, name);
-      alert("회원가입에 성공했습니다.");
-      navigete("/login");
+      const res = await joinEmail(email, password, name)
+      navigate('/login')
+      alert('회원가입 성공')
     } catch (err) {
-      console.log("이메일 회원가입 기능 에러 : ", err);
-      if (err.code === "auth/email-already-in-use") {
-        alert("이미 사용중인 이메일");
-      } else {
-        alert("회원가입에 실패하였습니다.");
-      }
+      console.error("회원가입 기능 에러", err)
     }
   };
 

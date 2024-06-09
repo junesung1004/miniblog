@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics"; // Firebase Analytics 추가
 
-import { getDatabase, ref as databaseRef, push, get, set } from "firebase/database";
+import { getDatabase, ref as databaseRef, push, get, set, remove } from "firebase/database";
 import { getDownloadURL, getStorage, ref as refImg, uploadBytes } from "firebase/storage";
 import { v4 as uuid } from "uuid";
 import {
@@ -69,10 +69,11 @@ export async function uploadPostData(post, imgUrl) {
 
 export async function deletePostData(postId) {
   try {
-    const result = delete(databaseRef(database, `posts/${postId}`))
-    return result
-  } catch(err) {
-    console.error("글 삭제 기능 에려 : ", err)
+    const postRef = databaseRef(database, `posts/${postId}`);
+    await remove(postRef); // 삭제 함수 호출 시 await 사용
+    console.log("글이 성공적으로 삭제되었습니다.");
+  } catch (err) {
+    console.error("글 삭제 기능 에러 : ", err);
   }
 }
 
@@ -119,6 +120,11 @@ export async function googleLogin() {
     console.error("구글 로그인 api 기능 실패 : ", err);
   }
 }
+
+//구글 자동 로그인 방지
+provider.setCustomParameters({
+  prompt: "select_account",
+});
 
 //이메일, 비밀번호 회원가입 api
 export async function joinEmail(email, password, name) {

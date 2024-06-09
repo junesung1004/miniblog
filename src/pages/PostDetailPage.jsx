@@ -15,7 +15,7 @@ export default function PostDetailPage() {
   const pathName = location.pathname;
   const id = pathName.split("/").pop();
 
-  const navigete = useNavigate();
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   // console.log("user : ", user);
 
@@ -53,7 +53,7 @@ export default function PostDetailPage() {
   const handleUploadComment = async () => {
     if (!user) {
       alert("로그인 전용기능입니다. 로그인 페이지로 이동합니다.");
-      navigete("/login");
+      navigate("/login");
       return;
     }
     try {
@@ -83,11 +83,11 @@ export default function PostDetailPage() {
     fetchComments();
   }, [id]);
 
-  const handleDeleteEvent = async (id) => {
+  const handleDeleteEvent = async () => {
     console.log("클릭")
     try {
       await deletePostData(id)
-      // navigete('/')
+      navigate('/')
     } catch(err) {
       console.error("글 삭제기능 에러 : ", err)
     }

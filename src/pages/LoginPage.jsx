@@ -49,32 +49,33 @@ export default function LoginPage() {
 
   const clickGoogleLogin = async () => {
     try {
-      const userData = await googleLogin();
-      if (userData) {
-        alert("구글 로그인에 성공했습니다.");
-        // sessionStorage.setItem("user", JSON.stringify(userData));
-        setUser(userData);
-        navigete("/");
+      const res = await googleLogin()
+      if(res) {
+        alert('로그인 성공')
+        navigete('/')
+        setUser(res)
+      } else {
+        alert('실패')
       }
-    } catch (err) {
-      console.error("구글 로그인 안됌 : ", err);
+    } catch(err) {
+      console.error('구글 로그인 에러', err)
     }
   };
 
   const clickEmailLogin = async () => {
     try {
-      const res = await loginEmail(email, password);
-      if (res) {
-        alert("로그인에 성공했습니다.");
-        navigete("/");
-        setUser(res);
+      const res = await loginEmail(email, password)
+      if(res) {
+        navigete('/')
+        alert('로그인 성공')
+        setUser(res)
       } else {
-        alert("아이디 또는 비밀번호가 잘못되었습니다.");
+        alert('가입이 안된 아이디입니다')
       }
-    } catch (err) {
-      console.error("로그인 기능 에러 : ", err);
+    } catch(err) {
+      console.error('로그인 실패', err)
     }
-  };
+  }
 
   return (
     <>
