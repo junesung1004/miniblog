@@ -83,9 +83,9 @@
 
 ## 프로젝트 이미지
 
-| ![메인 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/main.png)                   | ![블로그 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/blog.png)         |
-| ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| ![로그인 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/login.png)                | ![회원가입 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/signup.png)     |
-| ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| ![글작성 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/write.png)                | ![음식점 선택택 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/main.png)  |
-| ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| ![메인 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/main.png)                   | ![블로그 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/blog.png)     |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| ![로그인 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/login.png)                | ![회원가입 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/signup.png) |
+| ---------------------------------------------------------------------------------------------------------- |
+| ![글작성 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/write.png)                |
+| ---------------------------------------------------------------------------------------------------------- |
