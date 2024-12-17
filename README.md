@@ -83,8 +83,8 @@
 
 ## 프로젝트 이미지
 
-| ![메인 화면](https://github.com/junesung1004/superdak/blob/master/public/views/main.png)                   | ![포스트 화면](https://github.com/junesung1004/superdak/blob/master/public/views/category.png)     |
-| ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| ![회원가입 화면](https://github.com/junesung1004/superdak/blob/master/public/views/category1.png)          | ![로그인 화면](https://github.com/junesung1004/superdak/blob/master/public/views/detail.png)       |
-| ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| ![메인 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/main.png)                   | ![포스트 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/main.png) |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| ![회원가입 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/main.png)               | ![로그인 화면](https://github.com/junesung1004/miniblog/blob/master/public/views/main.png) |
+| ---------------------------------------------------------------------------------------------------------- |
 | ![글작성 화면](https://github.com/junesung1004/superdak/blob/master/public/views/cart.png)                 |
