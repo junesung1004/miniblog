@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics"; // Firebase Analytics 추가
 
-import { getDatabase, ref as databaseRef, push, get, set } from "firebase/database";
+import { getDatabase, ref as databaseRef, get, set } from "firebase/database";
 import { getDownloadURL, getStorage, ref as refImg, uploadBytes } from "firebase/storage";
 import { v4 as uuid } from "uuid";
 import {
